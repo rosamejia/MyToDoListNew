@@ -8,6 +8,7 @@
 
 import UIKit
 import RealmSwift
+import ChameleonFramework
 
 class CategoryViewController: SwipeTableViewController {
     let realm = try!Realm()
@@ -20,6 +21,7 @@ class CategoryViewController: SwipeTableViewController {
         super.viewDidLoad()
 
         loadCategories()
+        tableView.separatorStyle = .none
     }
 
     //MARK: - Table View Datasource Methods
@@ -31,6 +33,8 @@ class CategoryViewController: SwipeTableViewController {
         
         let cell = super.tableView(tableView, cellForRowAt: indexPath)
         cell.textLabel?.text = categories?[indexPath.row].name ?? "No categories added yet"
+        
+        cell.backgroundColor = UIColor(hexString: categories?[indexPath.row].backgroundColor ?? "127FAD")
         
         return cell
     }
@@ -45,7 +49,8 @@ class CategoryViewController: SwipeTableViewController {
             //what will happen once the user clicks the Add Item button on our UIAlert
             let newCategory = Category()
             newCategory.name = textField.text!
-        
+            newCategory.backgroundColor = UIColor.randomFlat.hexValue()
+            
             self.save(category: newCategory)
             //self.defaults.set(self.itemArray, forKey: "MyToDoListArray")
             
