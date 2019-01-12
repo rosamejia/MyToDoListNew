@@ -9,7 +9,7 @@
 import UIKit
 import RealmSwift
 
-class MyToDoViewController: UITableViewController {
+class MyToDoViewController: SwipeTableViewController {
     //Results is a realm Result
     var todoItems: Results<Item>?
     let realm = try!Realm()
@@ -24,6 +24,7 @@ class MyToDoViewController: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         print(FileManager.default.urls(for: .documentDirectory, in: .userDomainMask))
 
     }
@@ -35,7 +36,7 @@ class MyToDoViewController: UITableViewController {
     
     //MARK table view source
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "MyToDoItemCell", for: indexPath)
+        let cell = super.tableView(tableView, cellForRowAt: indexPath)
         
         if let item = todoItems?[indexPath.row] {
             cell.textLabel?.text = item.title
@@ -62,6 +63,7 @@ class MyToDoViewController: UITableViewController {
                     print("Error saving done status, \(error)")
                 }
             }
+        
         tableView.reloadData()
         tableView.deselectRow(at: indexPath, animated: true)
     }
@@ -105,6 +107,19 @@ class MyToDoViewController: UITableViewController {
         tableView.reloadData()
     }
     
+    //MARK: - Delete Data From Swipe
+    override func updateModel(at indexPath: IndexPath) {
+        if let item = todoItems?[indexPath.row] {
+            do {
+                try self.realm.write {
+                    self.realm.delete(item)
+//                    item.done = !item.done
+                }
+            } catch{
+                print("Error saving done status, \(error)")
+            }
+        }
+    }
 }
     
 //MARK: - Search bar methods
