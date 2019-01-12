@@ -14,6 +14,7 @@
 		D381468521DFAC43004680DC /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D381468321DFAC43004680DC /* Main.storyboard */; };
 		D381468721DFAC47004680DC /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D381468621DFAC47004680DC /* Assets.xcassets */; };
 		D381468A21DFAC47004680DC /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D381468821DFAC47004680DC /* LaunchScreen.storyboard */; };
+		D3B7F72921EA0FE700606A8C /* SwipeTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3B7F72821EA0FE700606A8C /* SwipeTableViewController.swift */; };
 		D3E181B121E8FCB300B0FFF1 /* Item.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3E181B021E8FCB300B0FFF1 /* Item.swift */; };
 		D3E181B321E8FCE200B0FFF1 /* Category.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3E181B221E8FCE200B0FFF1 /* Category.swift */; };
 /* End PBXBuildFile section */
@@ -29,6 +30,7 @@
 		D381468621DFAC47004680DC /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		D381468921DFAC47004680DC /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		D381468B21DFAC47004680DC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		D3B7F72821EA0FE700606A8C /* SwipeTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwipeTableViewController.swift; sourceTree = "<group>"; };
 		D3E181B021E8FCB300B0FFF1 /* Item.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Item.swift; sourceTree = "<group>"; };
 		D3E181B221E8FCE200B0FFF1 /* Category.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Category.swift; sourceTree = "<group>"; };
 		E9837B26F95C039C4DDC1D16 /* Pods-MyToDoList.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MyToDoList.release.xcconfig"; path = "Pods/Target Support Files/Pods-MyToDoList/Pods-MyToDoList.release.xcconfig"; sourceTree = "<group>"; };
@@ -77,6 +79,7 @@
 			children = (
 				D30602D121E38EFB00700A14 /* CategoryViewController.swift */,
 				D381468121DFAC43004680DC /* MyToDoViewController.swift */,
+				D3B7F72821EA0FE700606A8C /* SwipeTableViewController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -257,6 +260,7 @@
 				D30602D221E38EFB00700A14 /* CategoryViewController.swift in Sources */,
 				D381468221DFAC43004680DC /* MyToDoViewController.swift in Sources */,
 				D381468021DFAC43004680DC /* AppDelegate.swift in Sources */,
+				D3B7F72921EA0FE700606A8C /* SwipeTableViewController.swift in Sources */,
 				D3E181B321E8FCE200B0FFF1 /* Category.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
