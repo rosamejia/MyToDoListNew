@@ -26,10 +26,48 @@ class MyToDoViewController: SwipeTableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        print(FileManager.default.urls(for: .documentDirectory, in: .userDomainMask))
+        //print(FileManager.default.urls(for: .documentDirectory, in: .userDomainMask))
+        
         tableView.separatorStyle = .none
+        
     }
 
+    override func viewWillAppear(_ animated: Bool) {
+        title = selectedCategory?.name
+        guard let hexColor = selectedCategory?.backgroundColor else {fatalError()}
+        UpdateNavBar(withHexCode: hexColor)
+//        if let hexColor = selectedCategory?.backgroundColor {
+//            title = selectedCategory!.name
+//            guard let navBar = navigationController?.navigationBar else {
+//                fatalError("Navigation controller does not exists.")
+//            }
+//            if let navBarColor = UIColor(hexString: hexColor){
+//                navBar.barTintColor = navBarColor
+//                navBar.tintColor = ContrastColorOf(navBarColor, returnFlat: true)
+//                navBar.largeTitleTextAttributes = [NSAttributedString.Key.foregroundColor : ContrastColorOf(navBarColor, returnFlat: true)]
+//                searchBar.barTintColor = navBarColor
+//            }
+//        }
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        UpdateNavBar(withHexCode: "34495E")
+    }
+    
+    //MARK: Nav Bar Setup
+    func UpdateNavBar(withHexCode colorHexCode: String){
+        guard let navBar = navigationController?.navigationBar else {
+            fatalError("Navigation controller does not exists.")
+        }
+        
+        guard let navBarColor = UIColor(hexString: colorHexCode) else {fatalError()}
+        
+        navBar.barTintColor = navBarColor
+        navBar.tintColor = ContrastColorOf(navBarColor, returnFlat: true)
+        navBar.largeTitleTextAttributes = [NSAttributedString.Key.foregroundColor : ContrastColorOf(navBarColor, returnFlat: true)]
+        searchBar.barTintColor = navBarColor
+    }
+    
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return todoItems?.count ?? 1
     }
@@ -76,6 +114,8 @@ class MyToDoViewController: SwipeTableViewController {
         tableView.deselectRow(at: indexPath, animated: true)
     }
     
+    
+    @IBOutlet weak var searchBar: UISearchBar!
     
     //MARK Add new items
     @IBAction func addButtonPressed(_ sender: UIBarButtonItem) {
